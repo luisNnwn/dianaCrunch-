@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chicharrones Diana Crunch+ — Ruta A</title>
+<meta name="description" content="Rediseño de producto para una nueva audiencia — gym-goers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#1c1c19; --bg2:#151512; --panel:#22221e; --panel2:#282823;
+  --cream:#f1eee5; --muted:#b5b1a6; --line:#4a4942;
+  --lime:#9ab52f; --red:#c7472c; --yellow:#ffc62f; --orange:#d76531;
+  --max:1180px; --radius:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--cream);font-family:Inter,system-ui,sans-serif;line-height:1.55}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{width:min(var(--max),calc(100% - 40px));margin:auto}
+.nav{position:sticky;top:0;z-index:50;background:rgba(28,28,25,.9);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:"Big Shoulders Display",sans-serif;font-size:24px;font-weight:800;letter-spacing:.02em}
+.brand span{color:var(--lime)}
+.navlinks{display:flex;gap:18px;flex-wrap:wrap;justify-content:flex-end}
+.navlinks a{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.navlinks a:hover{color:var(--cream)}
+section{padding:92px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.eyebrow{color:#aaa79c;text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:600;margin-bottom:18px}
+h1,h2,h3{font-family:"Big Shoulders Display",sans-serif;line-height:.92;margin:0}
+h1{font-size:clamp(64px,9vw,122px);max-width:900px;letter-spacing:-.035em}
+h1 span{color:var(--lime)}
+h2{font-size:clamp(44px,6vw,76px);letter-spacing:-.025em}
+h3{font-size:30px}
+.lead{font-size:20px;color:#c8c4b9;max-width:780px}
+.muted{color:var(--muted)}
+.grid{display:grid;gap:18px}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.card.tight{padding:18px}
+.card p:last-child{margin-bottom:0}
+.pill{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:8px 12px;color:#c6c2b7;font-size:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}
+.hero{min-height:calc(100vh - 72px);display:flex;align-items:center;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;inset:auto -15% -55% 35%;height:70%;background:radial-gradient(circle,rgba(154,181,47,.12),transparent 60%);pointer-events:none}
+.hero-copy{position:relative;z-index:1}
+.hero-rule{width:100%;height:1px;background:var(--line);margin:34px 0 22px}
+.hero-meta{display:flex;gap:12px;flex-wrap:wrap}
+.kicker{color:var(--muted);font-size:15px}
+.bigquote{font-family:"Big Shoulders Display";font-size:clamp(40px,5vw,64px);line-height:.95}
+.callout{border-left:4px solid var(--lime);padding:4px 0 4px 20px}
+.callout.red{border-left-color:var(--red)}
+.stat{font-family:"Big Shoulders Display";font-size:50px;color:var(--cream);line-height:1}
+.stat small{display:block;font-family:Inter;font-size:11px;color:var(--muted);line-height:1.4;margin-top:7px;text-transform:uppercase;letter-spacing:.1em}
+.table{width:100%;border-collapse:collapse;font-size:13px}
+.table th,.table td{padding:15px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.table th{color:var(--cream);font-weight:600}
+.table td{color:#c0bdb2}
+.color-swatch{height:110px;border-radius:16px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:flex-end;padding:12px;font-size:12px}
+.sw-graf{background:#1c1c19}.sw-red{background:#c7472c}.sw-lime{background:#9ab52f;color:#161611}.sw-yellow{background:#ffc62f;color:#161611}.sw-cream{background:#f1eee5;color:#161611}
+.type-sample{font-family:"Big Shoulders Display";font-size:64px;line-height:.85}
+.video-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.video-slot{aspect-ratio:9/16;border:1px dashed #68665d;background:linear-gradient(145deg,#292924,#191916);border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px;color:#a8a49a;position:relative;overflow:hidden}
+.video-slot:before{content:"";position:absolute;width:120px;height:120px;border:1px solid rgba(154,181,47,.25);border-radius:50%}
+.video-slot strong{font-family:"Big Shoulders Display";font-size:25px;color:var(--cream);position:relative}
+.video-slot span{font-size:11px;margin-top:8px;position:relative}
+.video-wide{aspect-ratio:16/9;max-width:760px}
+.media-placeholder{min-height:300px;border:1px dashed #68665d;border-radius:20px;background:linear-gradient(135deg,#252520,#171714);display:flex;align-items:center;justify-content:center;text-align:center;padding:30px;color:#aaa69b}
+.pack-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.pack-slot{min-height:410px;border:1px dashed #68665d;border-radius:20px;background:radial-gradient(circle at 50% 40%,rgba(154,181,47,.08),transparent 35%),#171714;display:flex;align-items:center;justify-content:center;text-align:center;padding:25px}
+.pack-slot.barba{background:radial-gradient(circle at 50% 40%,rgba(199,71,44,.11),transparent 35%),#171714}
+.logo-slot{min-height:220px;border:1px dashed #68665d;border-radius:20px;display:flex;align-items:center;justify-content:center;color:#aaa69b}
+.post-card{min-height:240px;display:flex;flex-direction:column;justify-content:space-between}
+.post-accent{height:6px;border-radius:999px;background:var(--lime);margin-bottom:20px}
+.post-accent.red{background:var(--red)} .post-accent.yellow{background:var(--yellow)} .post-accent.orange{background:var(--orange)}
+.num{font-family:"Big Shoulders Display";font-size:70px;color:rgba(241,238,229,.12);line-height:.7}
+.timeline{display:grid;gap:10px}
+.phase{display:grid;grid-template-columns:70px 1fr auto;gap:18px;align-items:center;padding:18px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}
+.phase-num{font-family:"Big Shoulders Display";font-size:42px;color:var(--lime)}
+.badge{font-size:10px;text-transform:uppercase;letter-spacing:.12em;border:1px solid var(--line);padding:6px 8px;border-radius:999px;color:#aaa69b}
+.footer{padding:50px 0;color:#89867c;font-size:12px}
+.smallcaps{text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:#99968b}
+@media(max-width:850px){
+ .navlinks{display:none}.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+ .video-grid{grid-template-columns:repeat(2,1fr)}
+ .pack-grid{grid-template-columns:1fr}
+ .phase{grid-template-columns:55px 1fr}
+ .phase .badge{grid-column:2}
+}
+@media(max-width:520px){
+ .container{width:min(var(--max),calc(100% - 24px))}
+ section{padding:66px 0}
+ h1{font-size:60px}.video-grid{grid-template-columns:1fr 1fr}.video-slot{min-width:0}
+ .video-wide{width:100%}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#inicio">Diana <span>Crunch+</span></a>
+    <div class="navlinks">
+      <a href="#reto">Reto</a><a href="#rebranding">Producto</a><a href="#visual">Visual</a>
+      <a href="#videos">Videos</a><a href="#campana">Campaña</a><a href="#validacion">Validación</a><a href="#clickup">ClickUp</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<section id="inicio" class="hero">
+  <div class="container hero-copy">
+    <div class="eyebrow">Comercialización de Nuevos Productos · Unidad 2</div>
+    <h1>Chicharrones<br>Diana <span>Crunch+</span></h1>
+    <p class="lead">Rediseño de producto para una nueva audiencia — gym-goers.</p>
+    <p class="kicker">Ruta A · nuevo canal: gimnasios, vending y convenience fitness.</p>
+    <div class="hero-rule"></div>
+    <div class="hero-meta">
+      <span class="pill">Barbacoa</span><span class="pill">Limón</span><span class="pill">30–35 g</span>
+      <span class="pill">Textura extra crujiente</span><span class="pill">QR</span>
+    </div>
+  </div>
+</section>
+
+<section id="reto">
+<div class="container">
+  <div class="eyebrow">01 · El reto</div>
+  <div class="grid grid-2">
+    <div>
+      <h2>Un producto que existe.<br><span style="color:var(--lime)">Una audiencia que no lo ve como suyo.</span></h2>
+    </div>
+    <div class="card">
+      <p>El punto de partida es un producto existente con reconocimiento en el mercado, pero presentado desde códigos asociados principalmente a consumo familiar y momentos cotidianos.</p>
+      <div class="callout"><strong>Oportunidad:</strong> traducir un producto existente a un contexto de consumo fitness sin convertirlo en una marca nueva.</div>
+    </div>
+  </div>
+  <div class="grid grid-4" style="margin-top:18px">
+    <div class="card"><div class="smallcaps">Audiencia</div><h3 style="margin-top:10px">Gym-goers urbanos</h3><p class="muted">Personas que entrenan y buscan opciones prácticas alrededor de su rutina.</p></div>
+    <div class="card"><div class="smallcaps">Canal</div><h3 style="margin-top:10px">Fitness</h3><p class="muted">Gimnasios, vending y convenience fitness.</p></div>
+    <div class="card"><div class="smallcaps">Producto</div><h3 style="margin-top:10px">Crunch+</h3><p class="muted">Barbacoa y Limón, con presentación individual.</p></div>
+    <div class="card"><div class="smallcaps">Alcance</div><h3 style="margin-top:10px">Solo producto</h3><p class="muted">No se rediseña la identidad corporativa de Diana.</p></div>
+  </div>
+</div>
+</section>
+
+<section id="rebranding">
+<div class="container">
+  <div class="eyebrow">02 · Rebranding del producto</div>
+  <div class="grid grid-2">
+    <div class="card">
+      <div class="smallcaps">Nombre</div>
+      <h2 style="margin-top:12px">Chicharrones Diana <span style="color:var(--lime)">Crunch+</span></h2>
+      <p class="muted">“Crunch” convierte una característica sensorial —sonido y textura— en un activo verbal de campaña. El “+” señala una versión adaptada y de valor añadido, no una afirmación nutricional específica.</p>
+    </div>
+    <div class="card">
+      <div class="smallcaps">Propuesta de valor</div>
+      <div class="bigquote" style="margin-top:16px">“Crunch real.<br><span style="color:var(--lime)">Proteína real.</span>”</div>
+      <p class="muted">La redacción final de cualquier claim nutricional debe contrastarse con la información nutricional y legal vigente antes de publicar.</p>
+    </div>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <div class="smallcaps">Cambios físicos justificados por el canal</div>
+    <table class="table" style="margin-top:12px">
+      <tr><th>Decisión</th><th>Qué cambia</th><th>Por qué responde al nuevo canal/audiencia</th></tr>
+      <tr><td>Porción</td><td>30–35 g, individual</td><td>Facilita consumo portable; encaja mejor en bolso, casillero o vending que una bolsa familiar.</td></tr>
+      <tr><td>Textura</td><td>Énfasis en textura extra crujiente</td><td>El “crunch” se vuelve experiencia y lenguaje de campaña.</td></tr>
+      <tr><td>Empaque</td><td>Nueva presentación + QR</td><td>Destaca en un entorno de gimnasio y conecta el producto físico con contenido digital.</td></tr>
+      <tr><td>Sabores</td><td>Barbacoa y Limón</td><td>Se conserva el portafolio definido y se diferencian por código cromático.</td></tr>
+    </table>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <div class="smallcaps">Slogan</div>
+    <div class="bigquote" style="margin-top:12px">“Diana. ¡Vas a sentir el Crunch… aunque no sea tuyo!”</div>
+    <p class="muted">El sonido se convierte en un recurso narrativo: primero se escucha, luego se descubre quién está comiendo.</p>
+  </div>
+</div>
+</section>
+
+<section id="visual">
+<div class="container">
+  <div class="eyebrow">03 · Moodboard / sistema visual</div>
+  <h2>Del pasillo de la pulpería<br><span style="color:var(--lime)">al casillero del gym.</span></h2>
+  <p class="lead">La dirección visual no pretende que Diana parezca otra marca; busca que el producto puntual pueda convivir visualmente con el entorno fitness.</p>
+
+  <div class="grid grid-4" style="margin-top:28px">
+    <div class="card tight"><div class="color-swatch sw-graf">#1C1C19 · base</div><p class="muted">Evoca acero, máquinas y casilleros.</p></div>
+    <div class="card tight"><div class="color-swatch sw-red">Rojo-óxido · Barbacoa</div><p class="muted">Energía cálida y código de sabor.</p></div>
+    <div class="card tight"><div class="color-swatch sw-lime">Verde lima · Limón / +</div><p class="muted">Frescura y señal activa.</p></div>
+    <div class="card tight"><div class="color-swatch sw-cream">Crema · contraste</div><p class="muted">Lectura clara y estética editorial.</p></div>
+  </div>
+
+  <div class="grid grid-2" style="margin-top:18px">
+    <div class="card">
+      <div class="smallcaps">Tipografía</div>
+      <div class="type-sample" style="margin-top:18px">CRUNCH+</div>
+      <p class="muted">Big Shoulders / display condensada y angular. Reservada para titulares, nombre y mensajes de alto impacto.</p>
+    </div>
+    <div class="card">
+      <div class="smallcaps">Dirección fotográfica</div>
+      <p class="muted" style="font-size:18px;margin-top:18px">Documental y natural. Luz tenue/natural, tratamiento desaturado, acentos cálidos, fondos oscuros y producto claramente iluminado en planos finales.</p>
+      <div class="callout red"><strong>Identidad sonora:</strong> el crunch debe ser limpio, reconocible y sincronizado con la acción.</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <div class="smallcaps">Tono de voz</div>
+    <div class="grid grid-4" style="margin-top:18px">
+      <div><h3>Dinámica</h3><p class="muted">Movimiento y ritmo.</p></div>
+      <div><h3>Carismática</h3><p class="muted">Personalidad sin actuación exagerada.</p></div>
+      <div><h3>Enérgica</h3><p class="muted">Acompaña el contexto fitness.</p></div>
+      <div><h3>Segura</h3><p class="muted">Cierre claro, no agresivo.</p></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="videos">
+<div class="container">
+  <div class="eyebrow">04 · Videos de campaña</div>
+  <div class="grid grid-2">
+    <div><h2>El crunch<br><span style="color:var(--lime)">se escucha.</span></h2></div>
+    <div class="card"><p>Espacios preparados para las cuatro piezas verticales y el cierre horizontal. Reemplazá cada bloque por la ruta de tu video final.</p><span class="badge">4 × 9:16 + 1 × 16:9</span></div>
+  </div>
+  <div class="video-grid" style="margin-top:24px">
+    <div class="video-slot"><strong>VIDEO 01</strong><span>9:16 · ruta del archivo</span></div>
+    <div class="video-slot"><strong>VIDEO 02</strong><span>9:16 · ruta del archivo</span></div>
+    <div class="video-slot"><strong>VIDEO 03</strong><span>9:16 · ruta del archivo</span></div>
+    <div class="video-slot"><strong>VIDEO 04</strong><span>9:16 · ruta del archivo</span></div>
+  </div>
+  <div class="video-slot video-wide" style="margin-top:18px;margin-inline:auto"><strong>VIDEO PRINCIPAL</strong><span>16:9 · ruta del archivo</span></div>
+</div>
+</section>
+
+<section id="empaque">
+<div class="container">
+  <div class="eyebrow">05 · Concepto de empaque</div>
+  <div class="grid grid-2">
+    <div>
+      <h2>Portátil.<br><span style="color:var(--lime)">Visible.</span><br>Reconocible.</h2>
+      <p class="lead">La arquitectura del empaque conserva la lógica del producto puntual y utiliza el color para distinguir sabores.</p>
+    </div>
+    <div class="card">
+      <div class="smallcaps">Espacio para tus imágenes</div>
+      <p class="muted">Colocá aquí los renders finales de Barbacoa y Limón. No se inventan activos finales en esta plantilla.</p>
+    </div>
+  </div>
+  <div class="pack-grid" style="margin-top:24px">
+    <div class="pack-slot barba"><div><div class="badge">ESPACIO / RUTA</div><h3 style="margin-top:14px">Empaque Barbacoa</h3><p class="muted">Insertar imagen o ruta del archivo.</p></div></div>
+    <div class="pack-slot"><div><div class="badge">ESPACIO / RUTA</div><h3 style="margin-top:14px">Empaque Limón</h3><p class="muted">Insertar imagen o ruta del archivo.</p></div></div>
+  </div>
+</div>
+</section>
+
+<section id="logo">
+<div class="container">
+  <div class="eyebrow">06 · Logo + tono</div>
+  <div class="grid grid-2">
+    <div class="card">
+      <div class="smallcaps">Logo del producto</div>
+      <div class="logo-slot" style="margin-top:18px">PEGAR AQUÍ LA RUTA DEL LOGO FINAL</div>
+    </div>
+    <div class="card">
+      <div class="smallcaps">Voz definida</div>
+      <div class="bigquote" style="margin-top:16px">“Sandra”<br><span style="color:var(--lime)">ElevenLabs</span></div>
+      <p class="muted">Dinámica, carismática y enérgica. En los cierres debe mantenerse segura, directa y natural.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="marketing">
+<div class="container">
+  <div class="eyebrow">07 · Comercialización + marketing</div>
+  <div class="grid grid-4">
+    <div class="card"><div class="smallcaps">Producto</div><h3 style="margin-top:10px">Crunch+</h3><p class="muted">30–35 g, textura enfatizada, empaque adaptado y QR.</p></div>
+    <div class="card"><div class="smallcaps">Precio</div><h3 style="margin-top:10px">Ligeramente premium</h3><p class="muted">Validar con costos, margen y referencias del canal.</p></div>
+    <div class="card"><div class="smallcaps">Plaza</div><h3 style="margin-top:10px">Gimnasios</h3><p class="muted">Vending y convenience fitness en zonas de entrenamiento.</p></div>
+    <div class="card"><div class="smallcaps">Promoción</div><h3 style="margin-top:10px">Prueba + digital</h3><p class="muted">Sampling, contenido y microinfluencers fitness locales.</p></div>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <div class="smallcaps">¿Por qué este canal y no la pulpería tradicional?</div>
+    <p style="font-size:19px">La lógica no es abandonar el canal tradicional, sino abrir una ocasión de consumo adicional. En el gimnasio, el contexto ya comunica rutina, movimiento y consumo individual; el mismo producto puede adquirir un significado diferente si cambia su presentación y la forma de ser encontrado.</p>
+  </div>
+  <div class="grid grid-4" style="margin-top:18px">
+    <div class="card"><div class="stat">500<small>muestras · primer mes</small></div></div>
+    <div class="card"><div class="stat">10K<small>views · primeras 2 semanas</small></div></div>
+    <div class="card"><div class="stat">5<small>gimnasios · primer trimestre</small></div></div>
+    <div class="card"><div class="stat">20+<small>feedbacks reales</small></div></div>
+  </div>
+</div>
+</section>
+
+<section id="campana">
+<div class="container">
+  <div class="eyebrow">08 · Campaña de lanzamiento</div>
+  <h2>1 video + <span style="color:var(--lime)">5 posts.</span></h2>
+  <p class="lead">Una misma identidad, un mismo mensaje y una misma lógica visual.</p>
+  <div class="grid grid-3" style="margin-top:24px">
+    <div class="card post-card"><div><div class="post-accent red"></div><div class="num">01</div><h3>Producto</h3><p class="muted">Hero shot de Crunch+ Barbacoa y Limón.</p></div><span class="badge">Presentar</span></div>
+    <div class="card post-card"><div><div class="post-accent"></div><div class="num">02</div><h3>Crunch test</h3><p class="muted">Pregunta/reto sobre el sonido que hace pensar en Crunch+.</p></div><span class="badge">Conversar</span></div>
+    <div class="card post-card"><div><div class="post-accent yellow"></div><div class="num">03</div><h3>Mito vs realidad</h3><p class="muted">Reencuadrar la percepción del snack para la audiencia fitness.</p></div><span class="badge">Reencuadrar</span></div>
+    <div class="card post-card"><div><div class="post-accent orange"></div><div class="num">04</div><h3>Relatable</h3><p class="muted">Humor situacional basado en escuchar el crunch de otra persona.</p></div><span class="badge">Compartir</span></div>
+    <div class="card post-card"><div><div class="post-accent"></div><div class="num">05</div><h3>Dónde encontrarlo</h3><p class="muted">Gimnasios, vending/convenience participantes y CTA.</p></div><span class="badge">Convertir</span></div>
+    <div class="card post-card"><div><div class="post-accent red"></div><div class="num">▶</div><h3>Video principal</h3><p class="muted">Rutina → crunch → descubrimiento → reveal → tagline.</p></div><span class="badge">Recordar</span></div>
+  </div>
+</div>
+</section>
+
+<section id="validacion">
+<div class="container">
+  <div class="eyebrow">09 · Testeo / validación</div>
+  <div class="grid grid-2">
+    <div>
+      <h2>¿Esto realmente <span style="color:var(--lime)">conecta?</span></h2>
+      <p class="lead">El testeo es previo a la entrega final. No sustituye la campaña formal.</p>
+    </div>
+    <div class="card">
+      <ol class="muted">
+        <li>Publicar el video/jingle oficial.</li>
+        <li>Abrir caja de preguntas dirigida a personas que entrenan.</li>
+        <li>Recolectar mínimo 20 respuestas de perfiles reales.</li>
+        <li>Agrupar feedback por patrones.</li>
+        <li>Ajustar el concepto antes de cerrar.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="grid grid-2" style="margin-top:18px">
+    <div class="card">
+      <div class="smallcaps">Preguntas sugeridas</div>
+      <ul class="muted">
+        <li>¿Si vieras este producto en tu gimnasio, te llamaría la atención? ¿Por qué?</li>
+        <li>¿Qué cambiarías o mejorarías del empaque?</li>
+        <li>¿Qué entiendes que significa “Crunch+”?</li>
+        <li>¿Qué te transmite la combinación de colores?</li>
+        <li>¿El mensaje “aunque no sea tuyo” te parece fácil de recordar?</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="smallcaps">Matriz de hallazgos</div>
+      <table class="table">
+        <tr><th>Patrón</th><th>N.º</th><th>Implicación</th></tr>
+        <tr><td>Atracción visual</td><td>Pendiente</td><td>Qué códigos generan atención.</td></tr>
+        <tr><td>Comprensión</td><td>Pendiente</td><td>Si Crunch+ se entiende sin explicación.</td></tr>
+        <tr><td>Intención de prueba</td><td>Pendiente</td><td>Barreras de compra/curiosidad.</td></tr>
+        <tr><td>Percepción de precio</td><td>Pendiente</td><td>Si el premium parece justificable.</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <div class="smallcaps">Espacio para evidencia real</div>
+    <div class="media-placeholder" style="margin-top:14px">PEGAR AQUÍ CAPTURAS + LINKS DE LOS 20+ PERFILES Y RESPUESTAS<br><span class="smallcaps">No fabricar respuestas ni perfiles.</span></div>
+  </div>
+</div>
+</section>
+
+<section id="clickup">
+<div class="container">
+  <div class="eyebrow">10 · Fases del proyecto en ClickUp</div>
+  <h2>Del concepto a la <span style="color:var(--lime)">entrega.</span></h2>
+  <p class="lead">Esta estructura documenta el flujo; responsables y fechas deben asignarse directamente en ClickUp.</p>
+  <div class="timeline" style="margin-top:24px">
+    <div class="phase"><div class="phase-num">01</div><div><strong>Diagnóstico</strong><div class="muted">Audiencia, canal, problema y alcance.</div></div><span class="badge">ClickUp</span></div>
+    <div class="phase"><div class="phase-num">02</div><div><strong>Rebranding</strong><div class="muted">Nombre, propuesta, formato, empaque, QR y claims.</div></div><span class="badge">ClickUp</span></div>
+    <div class="phase"><div class="phase-num">03</div><div><strong>Dirección visual</strong><div class="muted">Moodboard, paleta, tipografía, fotografía y voz.</div></div><span class="badge">ClickUp</span></div>
+    <div class="phase"><div class="phase-num">04</div><div><strong>Comercialización</strong><div class="muted">4P, precio, puntos de venta, sampling y microinfluencers.</div></div><span class="badge">ClickUp</span></div>
+    <div class="phase"><div class="phase-num">05</div><div><strong>Campaña</strong><div class="muted">Guion, video, 5 posts, copies y formatos.</div></div><span class="badge">ClickUp</span></div>
+    <div class="phase"><div class="phase-num">06</div><div><strong>Testeo</strong><div class="muted">Publicación, Story, 20+ feedbacks y análisis.</div></div><span class="badge">ClickUp</span></div>
+    <div class="phase"><div class="phase-num">07</div><div><strong>Ajustes</strong><div class="muted">Aplicar aprendizajes y aprobar versión final.</div></div><span class="badge">ClickUp</span></div>
+    <div class="phase"><div class="phase-num">08</div><div><strong>Entrega</strong><div class="muted">Reporte, página, presentación y evidencias.</div></div><span class="badge">ClickUp</span></div>
+  </div>
+</div>
+</section>
+
+<section id="cierre">
+<div class="container">
+  <div class="eyebrow">11 · Cierre</div>
+  <div class="card">
+    <div class="bigquote">“No estamos cambiando Diana; estamos cambiando el contexto en el que un producto de Diana puede ser percibido como propio por una audiencia nueva.”</div>
+    <p class="muted" style="font-size:17px;margin-top:22px">Crunch+ convierte la textura, la portabilidad y el sonido del producto en códigos de una experiencia fitness.</p>
+  </div>
+</div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">Chicharrones Diana Crunch+ · Ruta A — Rediseño · Plantilla web editable para presentación.</div>
+</footer>
+</body>
+</html>
