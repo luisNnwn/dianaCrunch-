@@ -73,6 +73,11 @@ h3{font-size:30px}
 .video-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .video-slot{display:block;width:100%;min-width:0;max-width:100%;height:min(72vw,480px);border:1px solid #68665d;background:linear-gradient(145deg,#292924,#191916);border-radius:22px;padding:0;color:#a8a49a;position:relative;overflow:hidden;object-fit:contain}
 .video-wide{width:min(100%,760px);height:auto;aspect-ratio:16/9;object-fit:contain}
+.jingle-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:24px}
+.jingle-card{min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px}
+.jingle-card h3{font-size:26px;margin-top:8px}
+.jingle-card p{margin:8px 0 16px}
+.jingle-card video{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:16/9;border-radius:14px;object-fit:contain;background:#171714}
 .media-placeholder{min-height:300px;border:1px dashed #68665d;border-radius:20px;background:linear-gradient(135deg,#252520,#171714);display:flex;align-items:center;justify-content:center;text-align:center;padding:30px;color:#aaa69b}
 .pack-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .pack-slot{min-height:410px;border:1px dashed #68665d;border-radius:20px;background:radial-gradient(circle at 50% 40%,rgba(154,181,47,.08),transparent 35%),#171714;display:flex;align-items:center;justify-content:center;text-align:center;padding:25px}
@@ -108,6 +113,7 @@ h3{font-size:30px}
  .hero-title-art img:last-child{margin-left:-20%}
  .video-grid{grid-template-columns:1fr}
  .video-grid .video-slot{width:min(100%,360px);height:min(120vw,520px);margin-inline:auto}
+ .jingle-grid{grid-template-columns:1fr}
  .video-wide{width:100%}
  .hero-title-art img{width:230px;opacity:.3}
  .hero-title-art img:first-child{left:-18%;top:-24%}
@@ -263,11 +269,41 @@ h3{font-size:30px}
   <video class="video-slot video-wide" controls muted playsinline preload="metadata" style="margin-top:18px;margin-inline:auto">
     <source src="comercialDiana5.mp4" type="video/mp4">
   </video>
+  <div class="jingles" style="margin-top:64px">
+    <div class="eyebrow">Jingles de marca</div>
+    <h2>El sonido de <span style="color:var(--lime)">Crunch+.</span></h2>
+    <div class="jingle-grid">
+      <article class="jingle-card">
+        <div class="badge">JINGLE 01 · POP</div>
+        <h3>Pop energético</h3>
+        <p class="muted">Melódico, cercano y fácil de recordar.</p>
+        <video controls muted playsinline preload="metadata">
+          <source src="jingle1.mp4" type="video/mp4">
+        </video>
+      </article>
+      <article class="jingle-card">
+        <div class="badge">JINGLE 02 · ELECTRÓNICO</div>
+        <h3>Impulso electrónico</h3>
+        <p class="muted">Ritmo activo para acompañar la rutina fitness.</p>
+        <video controls muted playsinline preload="metadata">
+          <source src="jingle2.mp4" type="video/mp4">
+        </video>
+      </article>
+      <article class="jingle-card">
+        <div class="badge">JINGLE 03 · SOUND BRANDING</div>
+        <h3>Firma minimalista</h3>
+        <p class="muted">Breve, reconocible y centrada en el sonido del crunch.</p>
+        <video controls muted playsinline preload="metadata">
+          <source src="jingle3.mp4" type="video/mp4">
+        </video>
+      </article>
+    </div>
+  </div>
 </div>
 </section>
 
 <script>
-  const campaignVideos = [...document.querySelectorAll('#videos video')];
+  const campaignVideos = [...document.querySelectorAll('#videos > .container > .video-grid video, #videos > .container > .video-wide')];
 
   campaignVideos.forEach((video, index) => {
     video.addEventListener('play', () => {
