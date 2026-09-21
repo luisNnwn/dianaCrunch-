@@ -49,6 +49,12 @@ h3{font-size:30px}
 .hero{min-height:calc(100vh - 72px);display:flex;align-items:center;position:relative;overflow:hidden}
 .hero:after{content:"";position:absolute;inset:auto -15% -55% 35%;height:70%;background:radial-gradient(circle,rgba(154,181,47,.12),transparent 60%);pointer-events:none}
 .hero-copy{position:relative;z-index:1}
+.hero-title{display:grid;grid-template-columns:minmax(0,1fr) minmax(210px,28%);gap:18px;align-items:center;width:min(100%,1180px)}
+.hero-title-art{display:flex;align-items:center;gap:0;pointer-events:none;z-index:0}
+.hero-title-art img{position:relative;width:55%;opacity:.6;filter:saturate(.95) contrast(1.08) brightness(1.1);mix-blend-mode:screen}
+.hero-title-art img:first-child{transform:rotate(-6deg);z-index:1}
+.hero-title-art img:last-child{margin-left:-10%;transform:rotate(6deg)}
+.hero-title h1{position:relative;z-index:1}
 .hero-rule{width:100%;height:1px;background:var(--line);margin:34px 0 22px}
 .hero-meta{display:flex;gap:12px;flex-wrap:wrap}
 .kicker{color:var(--muted);font-size:15px}
@@ -65,7 +71,7 @@ h3{font-size:30px}
 .sw-graf{background:#1c1c19}.sw-red{background:#c7472c}.sw-lime{background:#9ab52f;color:#161611}.sw-yellow{background:#ffc62f;color:#161611}.sw-cream{background:#f1eee5;color:#161611}
 .type-sample{font-family:"Big Shoulders Display";font-size:64px;line-height:.85}
 .video-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.video-slot{aspect-ratio:9/16;border:1px dashed #68665d;background:linear-gradient(145deg,#292924,#191916);border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px;color:#a8a49a;position:relative;overflow:hidden}
+.video-slot{aspect-ratio:9/16;border:1px solid #68665d;background:linear-gradient(145deg,#292924,#191916);border-radius:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px;color:#a8a49a;position:relative;overflow:hidden}
 .video-slot:before{content:"";position:absolute;width:120px;height:120px;border:1px solid rgba(154,181,47,.25);border-radius:50%}
 .video-slot strong{font-family:"Big Shoulders Display";font-size:25px;color:var(--cream);position:relative}
 .video-slot span{font-size:11px;margin-top:8px;position:relative}
@@ -74,7 +80,10 @@ h3{font-size:30px}
 .pack-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .pack-slot{min-height:410px;border:1px dashed #68665d;border-radius:20px;background:radial-gradient(circle at 50% 40%,rgba(154,181,47,.08),transparent 35%),#171714;display:flex;align-items:center;justify-content:center;text-align:center;padding:25px}
 .pack-slot.barba{background:radial-gradient(circle at 50% 40%,rgba(199,71,44,.11),transparent 35%),#171714}
-.logo-slot{min-height:220px;border:1px dashed #68665d;border-radius:20px;display:flex;align-items:center;justify-content:center;color:#aaa69b}
+.pack-slot img{width:auto;height:320px;max-width:100%;object-fit:contain;margin:0 auto 14px}
+.logo-slot{min-height:280px;border:1px dashed #68665d;border-radius:20px;display:flex;align-items:center;justify-content:center;color:#aaa69b;overflow:hidden}
+.logo-slot img{width:100%;height:100%;max-width:none;object-fit:cover;object-position:center}
+.voice-card{display:flex;flex-direction:column;justify-content:center}
 .post-card{min-height:240px;display:flex;flex-direction:column;justify-content:space-between}
 .post-accent{height:6px;border-radius:999px;background:var(--lime);margin-bottom:20px}
 .post-accent.red{background:var(--red)} .post-accent.yellow{background:var(--yellow)} .post-accent.orange{background:var(--orange)}
@@ -87,6 +96,7 @@ h3{font-size:30px}
 .smallcaps{text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:#99968b}
 @media(max-width:850px){
  .navlinks{display:none}.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+ .hero-title{grid-template-columns:minmax(0,1fr) 190px;gap:10px}
  .video-grid{grid-template-columns:repeat(2,1fr)}
  .pack-grid{grid-template-columns:1fr}
  .phase{grid-template-columns:55px 1fr}
@@ -95,8 +105,15 @@ h3{font-size:30px}
 @media(max-width:520px){
  .container{width:min(var(--max),calc(100% - 24px))}
  section{padding:66px 0}
- h1{font-size:60px}.video-grid{grid-template-columns:1fr 1fr}.video-slot{min-width:0}
+ .hero-title{grid-template-columns:minmax(0,1fr) 110px;gap:6px}
+ h1{font-size:clamp(42px,13vw,60px)}
+ .hero-title-art img{width:62%;opacity:.48}
+ .hero-title-art img:last-child{margin-left:-20%}
+ .video-grid{grid-template-columns:1fr 1fr}.video-slot{min-width:0}
  .video-wide{width:100%}
+ .hero-title-art img{width:230px;opacity:.3}
+ .hero-title-art img:first-child{left:-18%;top:-24%}
+ .hero-title-art img:last-child{right:-18%;top:-18%}
 }
 </style>
 </head>
@@ -115,7 +132,13 @@ h3{font-size:30px}
 <section id="inicio" class="hero">
   <div class="container hero-copy">
     <div class="eyebrow">Comercialización de Nuevos Productos · Unidad 2</div>
-    <h1>Chicharrones<br>Diana <span>Crunch+</span></h1>
+    <div class="hero-title">
+      <div class="hero-title-art" aria-hidden="true">
+        <img src="chicharronesBarbacoa.png" alt="">
+        <img src="chicharronesLimon.png" alt="">
+      </div>
+      <h1>Chicharrones<br>Diana <span>Crunch+</span></h1>
+    </div>
     <p class="lead">Rediseño de producto para una nueva audiencia — gym-goers.</p>
     <p class="kicker">Ruta A · nuevo canal: gimnasios, vending y convenience fitness.</p>
     <div class="hero-rule"></div>
@@ -226,14 +249,41 @@ h3{font-size:30px}
     <div class="card"><p>Espacios preparados para las cuatro piezas verticales y el cierre horizontal. Reemplazá cada bloque por la ruta de tu video final.</p><span class="badge">4 × 9:16 + 1 × 16:9</span></div>
   </div>
   <div class="video-grid" style="margin-top:24px">
-    <div class="video-slot"><strong>VIDEO 01</strong><span>9:16 · ruta del archivo</span></div>
-    <div class="video-slot"><strong>VIDEO 02</strong><span>9:16 · ruta del archivo</span></div>
-    <div class="video-slot"><strong>VIDEO 03</strong><span>9:16 · ruta del archivo</span></div>
-    <div class="video-slot"><strong>VIDEO 04</strong><span>9:16 · ruta del archivo</span></div>
+    <video class="video-slot" controls autoplay muted playsinline preload="metadata">
+      <source src="comercialDiana1.mp4" type="video/mp4">
+    </video>
+    <video class="video-slot" controls muted playsinline preload="metadata">
+      <source src="comercialDiana2.mp4" type="video/mp4">
+    </video>
+    <video class="video-slot" controls muted playsinline preload="metadata">
+      <source src="comercialDiana3.mp4" type="video/mp4">
+    </video>
+    <video class="video-slot" controls muted playsinline preload="metadata">
+      <source src="comercialDiana4.mp4" type="video/mp4">
+    </video>
   </div>
-  <div class="video-slot video-wide" style="margin-top:18px;margin-inline:auto"><strong>VIDEO PRINCIPAL</strong><span>16:9 · ruta del archivo</span></div>
+  <video class="video-slot video-wide" controls muted playsinline preload="metadata" style="margin-top:18px;margin-inline:auto">
+    <source src="comercialDiana5.mp4" type="video/mp4">
+  </video>
 </div>
 </section>
+
+<script>
+  const campaignVideos = [...document.querySelectorAll('#videos video')];
+
+  campaignVideos.forEach((video, index) => {
+    video.addEventListener('play', () => {
+      campaignVideos.forEach((otherVideo, otherIndex) => {
+        if (otherIndex !== index) otherVideo.pause();
+      });
+    });
+
+    video.addEventListener('ended', () => {
+      const nextVideo = campaignVideos[index + 1];
+      if (nextVideo) nextVideo.play();
+    });
+  });
+</script>
 
 <section id="empaque">
 <div class="container">
@@ -244,13 +294,25 @@ h3{font-size:30px}
       <p class="lead">La arquitectura del empaque conserva la lógica del producto puntual y utiliza el color para distinguir sabores.</p>
     </div>
     <div class="card">
-      <div class="smallcaps">Espacio para tus imágenes</div>
-      <p class="muted">Colocá aquí los renders finales de Barbacoa y Limón. No se inventan activos finales en esta plantilla.</p>
+      <div class="smallcaps">Empaques finales</div>
+      <p class="muted">Presentación individual diferenciada por sabor para el canal fitness.</p>
     </div>
   </div>
   <div class="pack-grid" style="margin-top:24px">
-    <div class="pack-slot barba"><div><div class="badge">ESPACIO / RUTA</div><h3 style="margin-top:14px">Empaque Barbacoa</h3><p class="muted">Insertar imagen o ruta del archivo.</p></div></div>
-    <div class="pack-slot"><div><div class="badge">ESPACIO / RUTA</div><h3 style="margin-top:14px">Empaque Limón</h3><p class="muted">Insertar imagen o ruta del archivo.</p></div></div>
+    <div class="pack-slot barba">
+      <div>
+        <img src="chicharronesBarbacoa.png" alt="Empaque de chicharrones sabor barbacoa">
+        <div class="badge">BARBACOA</div>
+        <h3 style="margin-top:14px">Empaque Barbacoa</h3>
+      </div>
+    </div>
+    <div class="pack-slot">
+      <div>
+        <img src="chicharronesLimon.png" alt="Empaque de chicharrones sabor limón">
+        <div class="badge">LIMÓN</div>
+        <h3 style="margin-top:14px">Empaque Limón</h3>
+      </div>
+    </div>
   </div>
 </div>
 </section>
@@ -261,12 +323,17 @@ h3{font-size:30px}
   <div class="grid grid-2">
     <div class="card">
       <div class="smallcaps">Logo del producto</div>
-      <div class="logo-slot" style="margin-top:18px">PEGAR AQUÍ LA RUTA DEL LOGO FINAL</div>
+      <div class="logo-slot" style="margin-top:18px">
+        <img src="logoDiana.png" alt="Logo Diana">
+      </div>
     </div>
-    <div class="card">
+    <div class="card voice-card">
       <div class="smallcaps">Voz definida</div>
       <div class="bigquote" style="margin-top:16px">“Sandra”<br><span style="color:var(--lime)">ElevenLabs</span></div>
       <p class="muted">Dinámica, carismática y enérgica. En los cierres debe mantenerse segura, directa y natural.</p>
+      <audio controls preload="metadata" style="width:100%;margin-top:18px">
+        <source src="ElevenLabs_2026-09-21T00_31_14_Sandra - Dynamic, Engaging and Energetic_pvc_sp91_s50_sb75_se26_b_m2.mp3" type="audio/mpeg">
+      </audio>
     </div>
   </div>
 </div>
