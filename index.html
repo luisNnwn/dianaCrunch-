@@ -17,7 +17,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--cream);font-family:Inter,system-ui,sans-serif;line-height:1.55}
+body{margin:0;background:var(--bg);color:var(--cream);font-family:Inter,system-ui,sans-serif;line-height:1.55;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 .container{width:min(var(--max),calc(100% - 40px));margin:auto}
@@ -70,12 +70,9 @@ h3{font-size:30px}
 .color-swatch{height:110px;border-radius:16px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:flex-end;padding:12px;font-size:12px}
 .sw-graf{background:#1c1c19}.sw-red{background:#c7472c}.sw-lime{background:#9ab52f;color:#161611}.sw-yellow{background:#ffc62f;color:#161611}.sw-cream{background:#f1eee5;color:#161611}
 .type-sample{font-family:"Big Shoulders Display";font-size:64px;line-height:.85}
-.video-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.video-slot{aspect-ratio:9/16;border:1px solid #68665d;background:linear-gradient(145deg,#292924,#191916);border-radius:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px;color:#a8a49a;position:relative;overflow:hidden}
-.video-slot:before{content:"";position:absolute;width:120px;height:120px;border:1px solid rgba(154,181,47,.25);border-radius:50%}
-.video-slot strong{font-family:"Big Shoulders Display";font-size:25px;color:var(--cream);position:relative}
-.video-slot span{font-size:11px;margin-top:8px;position:relative}
-.video-wide{aspect-ratio:16/9;max-width:760px}
+.video-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.video-slot{display:block;width:100%;min-width:0;max-width:100%;height:min(72vw,480px);border:1px solid #68665d;background:linear-gradient(145deg,#292924,#191916);border-radius:22px;padding:0;color:#a8a49a;position:relative;overflow:hidden;object-fit:contain}
+.video-wide{width:min(100%,760px);height:auto;aspect-ratio:16/9;object-fit:contain}
 .media-placeholder{min-height:300px;border:1px dashed #68665d;border-radius:20px;background:linear-gradient(135deg,#252520,#171714);display:flex;align-items:center;justify-content:center;text-align:center;padding:30px;color:#aaa69b}
 .pack-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .pack-slot{min-height:410px;border:1px dashed #68665d;border-radius:20px;background:radial-gradient(circle at 50% 40%,rgba(154,181,47,.08),transparent 35%),#171714;display:flex;align-items:center;justify-content:center;text-align:center;padding:25px}
@@ -109,7 +106,8 @@ h3{font-size:30px}
  h1{font-size:clamp(42px,13vw,60px)}
  .hero-title-art img{width:62%;opacity:.48}
  .hero-title-art img:last-child{margin-left:-20%}
- .video-grid{grid-template-columns:1fr 1fr}.video-slot{min-width:0}
+ .video-grid{grid-template-columns:1fr}
+ .video-grid .video-slot{width:min(100%,360px);height:min(120vw,520px);margin-inline:auto}
  .video-wide{width:100%}
  .hero-title-art img{width:230px;opacity:.3}
  .hero-title-art img:first-child{left:-18%;top:-24%}
@@ -235,7 +233,7 @@ h3{font-size:30px}
       <div><h3>Dinámica</h3><p class="muted">Movimiento y ritmo.</p></div>
       <div><h3>Carismática</h3><p class="muted">Personalidad sin actuación exagerada.</p></div>
       <div><h3>Enérgica</h3><p class="muted">Acompaña el contexto fitness.</p></div>
-      <div><h3>Segura</h3><p class="muted">Cierre claro, no agresivo.</p></div>
+      <div><h3>Segura</h3><p class="muted">Cierre claro, no agresivo.</p></digit av>
     </div>
   </div>
 </div>
