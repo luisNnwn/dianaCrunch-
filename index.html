@@ -87,6 +87,12 @@ h3{font-size:30px}
 .logo-slot img{width:100%;height:100%;max-width:none;object-fit:cover;object-position:center}
 .voice-card{display:flex;flex-direction:column;justify-content:center}
 .post-card{min-height:240px;display:flex;flex-direction:column;justify-content:space-between}
+.campaign-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:24px}
+.post-heading{display:flex;align-items:baseline;gap:16px;margin:18px 0 10px}
+.post-heading .num{flex:0 0 auto}
+.post-heading h3{min-width:0}
+.instagram-embed{width:100%;min-width:0;margin:18px 0 0!important;background:#fff;border-radius:12px;overflow:hidden}
+.instagram-embed iframe{width:100%!important;min-width:0!important}
 .post-accent{height:6px;border-radius:999px;background:var(--lime);margin-bottom:20px}
 .post-accent.red{background:var(--red)} .post-accent.yellow{background:var(--yellow)} .post-accent.orange{background:var(--orange)}
 .num{font-family:"Big Shoulders Display";font-size:70px;color:rgba(241,238,229,.12);line-height:.7}
@@ -97,7 +103,7 @@ h3{font-size:30px}
 .footer{padding:50px 0;color:#89867c;font-size:12px}
 .smallcaps{text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:#99968b}
 @media(max-width:850px){
- .navlinks{display:none}.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+ .navlinks{display:none}.grid-2,.grid-3,.grid-4,.campaign-grid{grid-template-columns:1fr}
  .hero-title{grid-template-columns:minmax(0,1fr) 190px;gap:10px}
  .video-grid{grid-template-columns:repeat(2,1fr)}
  .pack-grid{grid-template-columns:1fr}
@@ -400,14 +406,15 @@ h3{font-size:30px}
   <div class="eyebrow">08 · Campaña de lanzamiento</div>
   <h2>1 video + <span style="color:var(--lime)">5 posts.</span></h2>
   <p class="lead">Una misma identidad, un mismo mensaje y una misma lógica visual.</p>
-  <div class="grid grid-3" style="margin-top:24px">
-    <div class="card post-card"><div><div class="post-accent red"></div><div class="num">01</div><h3>Producto</h3><p class="muted">Hero shot de Crunch+ Barbacoa y Limón.</p></div><span class="badge">Presentar</span></div>
-    <div class="card post-card"><div><div class="post-accent"></div><div class="num">02</div><h3>Crunch test</h3><p class="muted">Pregunta/reto sobre el sonido que hace pensar en Crunch+.</p></div><span class="badge">Conversar</span></div>
-    <div class="card post-card"><div><div class="post-accent yellow"></div><div class="num">03</div><h3>Mito vs realidad</h3><p class="muted">Reencuadrar la percepción del snack para la audiencia fitness.</p></div><span class="badge">Reencuadrar</span></div>
-    <div class="card post-card"><div><div class="post-accent orange"></div><div class="num">04</div><h3>Relatable</h3><p class="muted">Humor situacional basado en escuchar el crunch de otra persona.</p></div><span class="badge">Compartir</span></div>
-    <div class="card post-card"><div><div class="post-accent"></div><div class="num">05</div><h3>Dónde encontrarlo</h3><p class="muted">Gimnasios, vending/convenience participantes y CTA.</p></div><span class="badge">Convertir</span></div>
-    <div class="card post-card"><div><div class="post-accent red"></div><div class="num">▶</div><h3>Video principal</h3><p class="muted">Rutina → crunch → descubrimiento → reveal → tagline.</p></div><span class="badge">Recordar</span></div>
+  <div class="campaign-grid">
+    <article class="card post-card"><div><div class="post-accent red"></div><div class="post-heading"><div class="num">01</div><h3>Producto</h3></div><p class="muted">Hero shot de Crunch+ Barbacoa y Limón.</p><blockquote class="instagram-media instagram-embed" data-instgrm-permalink="https://www.instagram.com/p/Ddw01XkhRZf/" data-instgrm-version="14"><a href="https://www.instagram.com/p/Ddw01XkhRZf/" target="_blank" rel="noopener noreferrer">Ver publicación en Instagram</a></blockquote></div><span class="badge">Presentar</span></article>
+    <article class="card post-card"><div><div class="post-accent"></div><div class="post-heading"><div class="num">02</div><h3>Crunch test</h3></div><p class="muted">Pregunta/reto sobre el sonido que hace pensar en Crunch+.</p><blockquote class="instagram-media instagram-embed" data-instgrm-permalink="https://www.instagram.com/p/DdwxQ-2mtQu/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DdwxQ-2mtQu/" target="_blank" rel="noopener noreferrer">Ver publicación en Instagram</a></blockquote></div><span class="badge">Conversar</span></article>
+    <article class="card post-card"><div><div class="post-accent yellow"></div><div class="post-heading"><div class="num">03</div><h3>Mito vs realidad</h3></div><p class="muted">Reencuadrar la percepción del snack para la audiencia fitness.</p><blockquote class="instagram-media instagram-embed" data-instgrm-permalink="https://www.instagram.com/p/DdwxYNvmnVQ/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DdwxYNvmnVQ/" target="_blank" rel="noopener noreferrer">Ver publicación en Instagram</a></blockquote></div><span class="badge">Reencuadrar</span></article>
+    <article class="card post-card"><div><div class="post-accent orange"></div><div class="post-heading"><div class="num">04</div><h3>Relatable</h3></div><p class="muted">Humor situacional basado en escuchar el crunch de otra persona.</p><blockquote class="instagram-media instagram-embed" data-instgrm-permalink="https://www.instagram.com/p/Ddw1A7ZpTU3/" data-instgrm-version="14"><a href="https://www.instagram.com/p/Ddw1A7ZpTU3/" target="_blank" rel="noopener noreferrer">Ver publicación en Instagram</a></blockquote></div><span class="badge">Compartir</span></article>
+    <article class="card post-card"><div><div class="post-accent"></div><div class="post-heading"><div class="num">05</div><h3>Dónde encontrarlo</h3></div><p class="muted">Gimnasios, vending/convenience participantes y CTA.</p><blockquote class="instagram-media instagram-embed" data-instgrm-permalink="https://www.instagram.com/p/DdwxlsgGsZX/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DdwxlsgGsZX/" target="_blank" rel="noopener noreferrer">Ver publicación en Instagram</a></blockquote></div><span class="badge">Convertir</span></article>
+    <article class="card post-card"><div><div class="post-accent red"></div><div class="post-heading"><div class="num">▶</div><h3>Video principal</h3></div><p class="muted">Rutina → crunch → descubrimiento → reveal → tagline.</p><blockquote class="instagram-media instagram-embed" data-instgrm-permalink="https://www.instagram.com/p/DdwzheoJe6d/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DdwzheoJe6d/" target="_blank" rel="noopener noreferrer">Ver publicación en Instagram</a></blockquote></div><span class="badge">Recordar</span></article>
   </div>
+  <script async src="https://www.instagram.com/embed.js"></script>
 </div>
 </section>
 
