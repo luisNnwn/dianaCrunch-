@@ -79,6 +79,21 @@ h3{font-size:30px}
 .jingle-card p{margin:8px 0 16px}
 .jingle-card video{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:16/9;border-radius:14px;object-fit:contain;background:#171714}
 .media-placeholder{min-height:300px;border:1px dashed #68665d;border-radius:20px;background:linear-gradient(135deg,#252520,#171714);display:flex;align-items:center;justify-content:center;text-align:center;padding:30px;color:#aaa69b}
+.evidence-carousel{margin-top:18px;border:1px solid #4a4942;border-radius:18px;overflow:hidden;background:#171714}
+.evidence-stage{position:relative;overflow:hidden;background:repeating-linear-gradient(135deg,#1b1b18 0,#1b1b18 14px,#20201c 14px,#20201c 28px)}
+.evidence-track{display:flex;transition:transform .45s cubic-bezier(.22,.68,0,1.1)}
+.evidence-slide{flex:0 0 100%;min-width:0;margin:0;display:grid;place-items:center;height:min(62vw,620px);min-height:300px;padding:24px}
+.evidence-slide img{width:100%;height:100%;object-fit:contain}
+.evidence-number{position:absolute;left:22px;top:22px;padding:7px 11px;border:1px solid rgba(255,255,255,.24);border-radius:999px;background:rgba(21,21,18,.82);color:var(--cream);font-size:11px;font-weight:700;letter-spacing:.1em}
+.evidence-controls{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 18px;border-top:1px solid var(--line)}
+.evidence-controls p{margin:0;color:var(--muted);font-size:12px}
+.evidence-actions{display:flex;align-items:center;gap:10px}
+.evidence-progress{width:110px;height:3px;background:#41413a;overflow:hidden}
+.evidence-progress span{display:block;width:4%;height:100%;background:var(--lime);transition:width .25s ease}
+.evidence-button{display:grid;place-items:center;width:42px;height:42px;border:1px solid #66645a;border-radius:50%;background:transparent;color:var(--cream);font-size:20px;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.evidence-button:hover:not(:disabled){background:var(--lime);border-color:var(--lime);color:#171714}
+.evidence-button:disabled{opacity:.35;cursor:not-allowed}
+.evidence-button:focus-visible{outline:2px solid var(--yellow);outline-offset:3px}
 .pack-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .pack-slot{min-height:410px;border:1px dashed #68665d;border-radius:20px;background:radial-gradient(circle at 50% 40%,rgba(154,181,47,.08),transparent 35%),#171714;display:flex;align-items:center;justify-content:center;text-align:center;padding:25px}
 .pack-slot.barba{background:radial-gradient(circle at 50% 40%,rgba(199,71,44,.11),transparent 35%),#171714}
@@ -113,6 +128,12 @@ h3{font-size:30px}
 @media(max-width:520px){
  .container{width:min(var(--max),calc(100% - 24px))}
  section{padding:66px 0}
+ .evidence-slide{height:110vw;min-height:260px;padding:14px}
+ .evidence-number{left:14px;top:14px}
+ .evidence-controls{padding:12px;gap:8px}
+ .evidence-controls p{font-size:11px}
+ .evidence-progress{width:48px}
+ .evidence-button{width:38px;height:38px}
  .hero-title{grid-template-columns:minmax(0,1fr) 110px;gap:6px}
  h1{font-size:clamp(42px,13vw,60px)}
  .hero-title-art img{width:62%;opacity:.48}
@@ -460,7 +481,20 @@ h3{font-size:30px}
   </div>
   <div class="card" style="margin-top:18px">
     <div class="smallcaps">Espacio para evidencia real</div>
-    <div class="media-placeholder" style="margin-top:14px">PEGAR AQUÍ CAPTURAS + LINKS DE LOS 20+ PERFILES Y RESPUESTAS<br><span class="smallcaps">No fabricar respuestas ni perfiles.</span></div>
+    <div class="evidence-carousel" role="region" aria-label="Carrusel de evidencia real">
+      <div class="evidence-stage">
+        <div class="evidence-track" id="evidenceTrack"></div>
+        <span class="evidence-number" id="evidenceNumber" aria-live="polite">01 / 25</span>
+      </div>
+      <div class="evidence-controls">
+        <p>25 evidencias · No fabricar respuestas ni perfiles.</p>
+        <div class="evidence-actions">
+          <div class="evidence-progress" aria-hidden="true"><span id="evidenceProgress"></span></div>
+          <button class="evidence-button" id="evidencePrevious" type="button" aria-label="Imagen anterior" disabled>&lsaquo;</button>
+          <button class="evidence-button" id="evidenceNext" type="button" aria-label="Imagen siguiente">&rsaquo;</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 </section>
@@ -493,6 +527,41 @@ h3{font-size:30px}
 </div>
 </section>
 </main>
+
+<script>
+  const evidenceTrack = document.querySelector('#evidenceTrack');
+  const evidenceNumber = document.querySelector('#evidenceNumber');
+  const evidenceProgress = document.querySelector('#evidenceProgress');
+  const previousEvidence = document.querySelector('#evidencePrevious');
+  const nextEvidence = document.querySelector('#evidenceNext');
+  const evidenceCount = 25;
+  let currentEvidence = 0;
+
+  for (let index = 1; index <= evidenceCount; index++) {
+    const slide = document.createElement('figure');
+    slide.className = 'evidence-slide';
+    slide.setAttribute('aria-label', `Evidencia ${index} de ${evidenceCount}`);
+
+    const image = document.createElement('img');
+    image.src = `${index}.png`;
+    image.alt = `Evidencia real ${index}`;
+    image.loading = index === 1 ? 'eager' : 'lazy';
+    slide.append(image);
+    evidenceTrack.append(slide);
+  }
+
+  function showEvidence(index) {
+    currentEvidence = Math.max(0, Math.min(index, evidenceCount - 1));
+    evidenceTrack.style.transform = `translateX(-${currentEvidence * 100}%)`;
+    evidenceNumber.textContent = `${String(currentEvidence + 1).padStart(2, '0')} / ${evidenceCount}`;
+    evidenceProgress.style.width = `${((currentEvidence + 1) / evidenceCount) * 100}%`;
+    previousEvidence.disabled = currentEvidence === 0;
+    nextEvidence.disabled = currentEvidence === evidenceCount - 1;
+  }
+
+  previousEvidence.addEventListener('click', () => showEvidence(currentEvidence - 1));
+  nextEvidence.addEventListener('click', () => showEvidence(currentEvidence + 1));
+</script>
 
 <footer class="footer">
   <div class="container">Chicharrones Diana Crunch+ · Ruta A — Rediseño · Plantilla web editable para presentación.</div>
