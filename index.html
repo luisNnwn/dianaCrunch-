@@ -114,9 +114,22 @@ h3{font-size:30px}
 .timeline{display:grid;gap:10px}
 .phase{display:grid;grid-template-columns:70px 1fr auto;gap:18px;align-items:center;padding:18px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}
 .phase-num{font-family:"Big Shoulders Display";font-size:42px;color:var(--lime)}
+.phase-copy{min-width:0}
+.phase-tasks{display:grid;gap:5px;margin:10px 0 0;padding:0;list-style:none}
+.phase-tasks li{position:relative;padding-left:14px;color:var(--muted);font-size:12px;line-height:1.45}
+.phase-tasks li:before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--lime)}
+.clickup-embed-card{width:100%;min-width:0;margin-top:18px;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:var(--panel)}
+.clickup-embed-card iframe{display:block;width:100%;max-width:100%;height:700px;border:0;background:var(--panel)}
+.clickup-open-link{display:inline-flex;align-items:center;margin-top:14px;color:var(--lime);font-size:11px;font-weight:700;letter-spacing:.1em}
+.clickup-open-link:hover{color:var(--cream)}
 .badge{font-size:10px;text-transform:uppercase;letter-spacing:.12em;border:1px solid var(--line);padding:6px 8px;border-radius:999px;color:#aaa69b}
 .footer{padding:50px 0;color:#89867c;font-size:12px}
 .smallcaps{text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:#99968b}
+.audience-question{margin:24px 0 4px;padding-left:0;border-left:0;text-align:center;font-family:"Big Shoulders Display",sans-serif;font-size:36px;line-height:1.05;color:var(--cream)}
+.audience-question span{color:var(--lime)}
+.validation-question-card{display:grid;grid-template-rows:1fr auto 1fr}
+.validation-question-card .audience-question{margin:0}
+.findings-table .finding-quotes{display:block;margin-top:5px;color:var(--muted);font-size:11px;line-height:1.35}
 @media(max-width:850px){
  .navlinks{display:none}.grid-2,.grid-3,.grid-4,.campaign-grid{grid-template-columns:1fr}
  .hero-title{grid-template-columns:minmax(0,1fr) 190px;gap:10px}
@@ -128,12 +141,14 @@ h3{font-size:30px}
 @media(max-width:520px){
  .container{width:min(var(--max),calc(100% - 24px))}
  section{padding:66px 0}
+ .audience-question{font-size:30px}
  .evidence-slide{height:88vw;min-height:240px;padding:14px}
  .evidence-number{left:14px;top:14px}
  .evidence-controls{padding:12px;gap:8px}
  .evidence-controls p{font-size:11px}
  .evidence-progress{width:48px}
  .evidence-button{width:38px;height:38px}
+ .clickup-embed-card iframe{height:520px}
  .hero-title{grid-template-columns:minmax(0,1fr) 110px;gap:6px}
  h1{font-size:clamp(42px,13vw,60px)}
  .hero-title-art img{width:62%;opacity:.48}
@@ -458,24 +473,18 @@ h3{font-size:30px}
     </div>
   </div>
   <div class="grid grid-2" style="margin-top:18px">
-    <div class="card">
-      <div class="smallcaps">Preguntas sugeridas</div>
-      <ul class="muted">
-        <li>¿Si vieras este producto en tu gimnasio, te llamaría la atención? ¿Por qué?</li>
-        <li>¿Qué cambiarías o mejorarías del empaque?</li>
-        <li>¿Qué entiendes que significa “Crunch+”?</li>
-        <li>¿Qué te transmite la combinación de colores?</li>
-        <li>¿El mensaje “aunque no sea tuyo” te parece fácil de recordar?</li>
-      </ul>
+    <div class="card validation-question-card">
+      <div class="smallcaps">¿Qué le preguntamos a la audiencia?</div>
+      <p class="audience-question">Si vieras <span>Diana Crunch+</span> en tu gimnasio, ¿te llamaría la atención? ¿Por qué?</p>
     </div>
     <div class="card">
       <div class="smallcaps">Matriz de hallazgos</div>
-      <table class="table">
+      <table class="table findings-table">
         <tr><th>Patrón</th><th>N.º</th><th>Implicación</th></tr>
-        <tr><td>Atracción visual</td><td>Pendiente</td><td>Qué códigos generan atención.</td></tr>
-        <tr><td>Comprensión</td><td>Pendiente</td><td>Si Crunch+ se entiende sin explicación.</td></tr>
-        <tr><td>Intención de prueba</td><td>Pendiente</td><td>Barreras de compra/curiosidad.</td></tr>
-        <tr><td>Percepción de precio</td><td>Pendiente</td><td>Si el premium parece justificable.</td></tr>
+        <tr><td>Atractivo visual</td><td>8 (32%)</td><td>El empaque, los colores y la presentación generan interés y llaman la atención.<span class="finding-quotes">“Su empaque se ve fino” · “se ve elegante y apetitosa”</span></td></tr>
+        <tr><td>Relación con el gym</td><td>7 (28%)</td><td>El concepto se asocia claramente con entrenamiento y consumo después del ejercicio.<span class="finding-quotes">“es acertada para un gym” · “Amaría que estuviera en mi gym”</span></td></tr>
+        <tr><td>Sabor / atractivo sensorial</td><td>9 (36%)</td><td>Los sabores generan curiosidad y apetencia; se mantiene Barbacoa y Limón.<span class="finding-quotes">“se antojan :)” · “los sabores se ven ricos”</span></td></tr>
+        <tr><td>Nutrición / proteína</td><td>5 (20%)</td><td>Algunos participantes relacionan el producto con proteína, salud o balance.<span class="finding-quotes">“Deliciosas y cantidad de proteína” · “para una vida nutritiva”</span></td></tr>
       </table>
     </div>
   </div>
@@ -505,14 +514,22 @@ h3{font-size:30px}
   <h2>Del concepto a la <span style="color:var(--lime)">entrega.</span></h2>
   <p class="lead">Esta estructura documenta el flujo; responsables y fechas deben asignarse directamente en ClickUp.</p>
   <div class="timeline" style="margin-top:24px">
-    <div class="phase"><div class="phase-num">01</div><div><strong>Diagnóstico</strong><div class="muted">Audiencia, canal, problema y alcance.</div></div><span class="badge">ClickUp</span></div>
-    <div class="phase"><div class="phase-num">02</div><div><strong>Rebranding</strong><div class="muted">Nombre, propuesta, formato, empaque, QR y claims.</div></div><span class="badge">ClickUp</span></div>
-    <div class="phase"><div class="phase-num">03</div><div><strong>Dirección visual</strong><div class="muted">Moodboard, paleta, tipografía, fotografía y voz.</div></div><span class="badge">ClickUp</span></div>
-    <div class="phase"><div class="phase-num">04</div><div><strong>Comercialización</strong><div class="muted">4P, precio, puntos de venta, sampling y microinfluencers.</div></div><span class="badge">ClickUp</span></div>
-    <div class="phase"><div class="phase-num">05</div><div><strong>Campaña</strong><div class="muted">Guion, video, 5 posts, copies y formatos.</div></div><span class="badge">ClickUp</span></div>
-    <div class="phase"><div class="phase-num">06</div><div><strong>Testeo</strong><div class="muted">Publicación, Story, 20+ feedbacks y análisis.</div></div><span class="badge">ClickUp</span></div>
-    <div class="phase"><div class="phase-num">07</div><div><strong>Ajustes</strong><div class="muted">Aplicar aprendizajes y aprobar versión final.</div></div><span class="badge">ClickUp</span></div>
-    <div class="phase"><div class="phase-num">08</div><div><strong>Entrega</strong><div class="muted">Reporte, página, presentación y evidencias.</div></div><span class="badge">ClickUp</span></div>
+    <div class="phase"><div class="phase-num">01</div><div class="phase-copy"><strong>DIAGNÓSTICO</strong><ul class="phase-tasks"><li>Definir público objetivo y contexto de consumo</li><li>Definir nuevo canal de comercialización</li><li>Definir problema, oportunidad y alcance</li></ul></div><span class="badge">ClickUp</span></div>
+    <div class="phase"><div class="phase-num">02</div><div class="phase-copy"><strong>REBRANDING</strong><ul class="phase-tasks"><li>Desarrollar empaque y presentación</li><li>Definir moodboard e identidad conceptual</li><li>Definir concepto Crunch+</li></ul></div><span class="badge">ClickUp</span></div>
+    <div class="phase"><div class="phase-num">03</div><div class="phase-copy"><strong>DIRECCIÓN VISUAL</strong><ul class="phase-tasks"><li>Desarrollar identidad visual de Crunch+</li><li>Definir dirección fotográfica y audiovisual</li><li>Adaptar identidad a contenido</li></ul></div><span class="badge">ClickUp</span></div>
+    <div class="phase"><div class="phase-num">04</div><div class="phase-copy"><strong>COMERCIALIZACIÓN</strong><ul class="phase-tasks"><li>Definir puntos de venta y estrategia de activación</li><li>Justificar nuevo canal y mensaje comercial</li><li>Definir las 4P de Crunch+</li></ul></div><span class="badge">ClickUp</span></div>
+    <div class="phase"><div class="phase-num">05</div><div class="phase-copy"><strong>CAMPAÑA</strong><ul class="phase-tasks"><li>Desarrollo de contenido audiovisual complementario</li><li>Producción del video principal</li><li>Desarrollo de 5 publicaciones para redes sociales</li></ul></div><span class="badge">ClickUp</span></div>
+    <div class="phase"><div class="phase-num">06</div><div class="phase-copy"><strong>TESTEO</strong><ul class="phase-tasks"><li>Publicar Story de validación</li><li>Recopilar 25 respuestas reales</li><li>Analizar resultados</li></ul></div><span class="badge">ClickUp</span></div>
+    <div class="phase"><div class="phase-num">07</div><div class="phase-copy"><strong>AJUSTES</strong><ul class="phase-tasks"><li>Aplicar resultados del testeo</li><li>Aprobar versión final</li></ul></div><span class="badge">ClickUp</span></div>
+    <div class="phase"><div class="phase-num">08</div><div class="phase-copy"><strong>ENTREGA</strong><ul class="phase-tasks"><li>Finalizar reporte y evidencias</li><li>Preparar presentación final</li><li>Finalizar página/web del proyecto</li></ul></div><span class="badge">ClickUp</span></div>
+  </div>
+  <div class="clickup-evidence" style="margin-top:48px">
+    <div class="smallcaps">EVIDENCIA DE EJECUCIÓN</div>
+    <p class="muted" style="max-width:900px;margin:14px 0 0">El proyecto fue gestionado mediante ClickUp durante un sprint de dos semanas, organizado en ocho fases y tareas específicas asignadas al equipo. La siguiente vista permite consultar directamente la planificación y el seguimiento del proyecto.</p>
+    <div class="clickup-embed-card">
+      <iframe src="https://app.clickup.com/90141670200/v/li/901421311229" width="100%" height="700" frameborder="0" allowfullscreen title="Proyecto Crunch+ en ClickUp" loading="lazy"></iframe>
+    </div>
+    <a class="clickup-open-link" href="https://app.clickup.com/90141670200/v/li/901421311229" target="_blank" rel="noopener noreferrer">ABRIR PROYECTO EN CLICKUP ↗</a>
   </div>
 </div>
 </section>
