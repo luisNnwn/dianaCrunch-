@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Diana Crunch+ — Crunch Meter</title>
+<meta name="description" content="¿Cuántos Crunch podés hacer? Medí tu reto Diana Crunch+.">
+<meta name="theme-color" content="#1c1c19">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1c1c19;--bg-deep:#141411;--panel:#252520;--cream:#f1eee5;--muted:#aaa79c;--line:#4a4942;--lime:#9ab52f;--red:#c7472c;--max:1180px}
+*{box-sizing:border-box}
+html{min-width:320px;background:var(--bg)}
+body{min-width:320px;min-height:100vh;margin:0;background:var(--bg);color:var(--cream);font-family:Inter,system-ui,sans-serif;line-height:1.5}
+button{font:inherit}
+a{color:inherit;text-decoration:none}
+.page{width:min(var(--max),calc(100% - 48px));margin:0 auto;padding:24px 0 18px}
+.masthead{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:68px;border-bottom:1px solid var(--line)}
+.brand-logo{display:block;width:164px;height:58px;object-fit:contain;object-position:left center}
+.return-link{color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.return-link:hover{color:var(--lime)}
+.poster{position:relative;margin-top:22px;overflow:hidden;border:1px solid #535148;background:var(--bg-deep)}
+.poster:before{position:absolute;inset:0 auto 0 0;width:7px;background:var(--red);content:""}
+.poster-head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 28px;border-bottom:1px solid rgba(255,255,255,.09);color:var(--muted);font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+.poster-head span:last-child{color:var(--lime)}
+.poster-body{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr);min-height:640px}
+.challenge{position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;padding:44px 42px 42px 52px}
+.eyebrow{margin:0 0 15px;color:var(--red);font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+h1{max-width:660px;margin:0;font-family:"Big Shoulders Display",sans-serif;font-size:68px;font-weight:800;line-height:.91;text-transform:uppercase}
+h1 span{color:var(--lime)}
+.counter-row{display:flex;align-items:flex-end;gap:16px;margin:32px 0 24px}
+.count{min-width:190px;font-family:"Big Shoulders Display",sans-serif;font-size:160px;font-weight:800;line-height:.76;font-variant-numeric:tabular-nums;text-shadow:0 8px 24px rgba(0,0,0,.4)}
+.count.is-bumping{animation:count-bump .24s ease-out}
+.count-label{padding-bottom:5px;color:var(--muted);font-size:10px;font-weight:700;letter-spacing:.12em;line-height:1.5;text-transform:uppercase}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.button{position:relative;min-height:50px;padding:14px 20px;border:1px solid var(--lime);border-radius:5px;background:var(--lime);color:#171714;font-size:11px;font-weight:800;letter-spacing:.1em;text-align:center;text-transform:uppercase;cursor:pointer;transition:transform .16s ease,box-shadow .2s ease,background .2s ease}
+.button:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(154,181,47,.2)}
+.button:active{transform:scale(.97)}
+.button:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
+.button.secondary{border-color:#704031;background:transparent;color:var(--cream)}
+.button.secondary:hover{border-color:var(--red);background:rgba(199,71,44,.1)}
+.button.is-crunching:after{position:absolute;top:-22px;left:50%;color:var(--red);content:"CRUNCH!";font-family:"Big Shoulders Display",sans-serif;font-size:18px;font-weight:800;white-space:nowrap;pointer-events:none;animation:crunch-pop .65s ease-out both}
+.progress{margin-top:28px}
+.progress-heading,.progress-meta{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.progress-heading{margin-bottom:10px;color:var(--muted);font-size:11px}
+.progress-heading strong{color:var(--cream);font-variant-numeric:tabular-nums}
+.track{height:14px;padding:3px;overflow:hidden;border:1px solid #514f47;border-radius:999px;background:#10100e;box-shadow:inset 0 2px 5px rgba(0,0,0,.45)}
+.fill{width:0;height:100%;border-radius:999px;background:linear-gradient(90deg,#7e9825,var(--lime));box-shadow:0 0 12px rgba(154,181,47,.25);transition:width .45s cubic-bezier(.22,.68,0,1)}
+.track.is-complete .fill{box-shadow:0 0 16px rgba(154,181,47,.55);animation:complete-glow .9s ease-out 1}
+.progress-meta{min-height:32px;margin-top:7px;color:var(--lime);font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+.complete{visibility:hidden;color:var(--lime);font-family:"Big Shoulders Display",sans-serif;font-size:21px;font-weight:800;letter-spacing:.05em}
+.complete.is-visible{visibility:visible;animation:complete-glow .9s ease-out 1}
+.share-area{margin-top:21px}
+.feedback{min-height:20px;margin:10px 0 0;color:var(--lime);font-size:11px}
+.manual-copy{display:none;width:100%;min-height:90px;margin-top:8px;padding:12px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--cream);font:12px/1.5 Inter,sans-serif;resize:vertical}
+.manual-copy.is-visible{display:block}
+.product-stage{position:relative;display:flex;align-items:center;justify-content:center;min-height:100%;overflow:hidden;border-left:1px solid rgba(255,255,255,.09);background:#262620}
+.product-stage:before{position:absolute;top:-6%;right:-20%;width:82%;height:112%;background:var(--red);content:"";transform:skewX(-13deg)}
+.product-stage:after{position:absolute;right:0;bottom:0;left:0;height:9px;background:var(--lime);content:""}
+.packs{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:100%;height:100%;gap:0;padding:36px 18px 40px}
+.pack{display:flex;flex:1 1 0;flex-direction:column;align-items:center;justify-content:center;min-width:0;height:100%;margin:0}
+.pack img{width:100%;height:440px;object-fit:contain;filter:drop-shadow(0 16px 16px rgba(0,0,0,.36));transition:transform .3s ease}
+.pack:first-child img{transform:rotate(-5deg)}
+.pack:last-child img{transform:rotate(5deg)}
+.pack:hover img{transform:translateY(-6px) rotate(0)}
+.pack figcaption{margin-top:-14px;color:var(--cream);font-family:"Big Shoulders Display",sans-serif;font-size:22px;font-weight:800;letter-spacing:.08em;text-shadow:0 2px 8px rgba(0,0,0,.4)}
+.poster-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 28px;border-top:1px solid rgba(255,255,255,.09);color:var(--muted);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.poster-foot strong{color:var(--cream)}
+@keyframes count-bump{50%{transform:scale(1.07);color:var(--lime)}}
+@keyframes complete-glow{50%{filter:brightness(1.35);transform:scale(1.025)}}
+@keyframes crunch-pop{0%{opacity:0;transform:translate(-50%,8px) scale(.85)}25%{opacity:1;transform:translate(-50%,0) scale(1)}100%{opacity:0;transform:translate(-50%,-12px) scale(.96)}}
+@media(max-width:900px){
+  .poster-body{grid-template-columns:minmax(0,1fr) minmax(290px,.85fr)}
+  .challenge{padding:36px 25px 34px 34px}
+  h1{font-size:58px}
+  .count{min-width:150px;font-size:136px}
+  .pack img{height:370px}
+}
+@media(max-width:680px){
+  .page{width:calc(100% - 24px);padding-top:10px}
+  .masthead{min-height:60px}
+  .brand-logo{width:132px;height:50px}
+  .return-link{font-size:10px}
+  .poster{margin-top:14px}
+  .poster-head{padding:12px 16px;font-size:9px}
+  .poster-body{grid-template-columns:1fr}
+  .challenge{padding:30px 22px 24px 27px}
+  h1{font-size:48px}
+  .counter-row{gap:12px;margin:25px 0 22px}
+  .count{min-width:128px;font-size:112px}
+  .count-label{font-size:9px}
+  .actions{display:grid;grid-template-columns:1fr 1fr}
+  .button{min-height:48px;padding:12px 10px;font-size:10px}
+  .progress{margin-top:23px}
+  .product-stage{min-height:300px;border-top:1px solid rgba(255,255,255,.09);border-left:0}
+  .packs{height:300px;padding:18px 12px 25px}
+  .pack img{height:240px}
+  .pack figcaption{margin-top:-7px;font-size:19px}
+  .poster-foot{padding:12px 16px;font-size:9px}
+}
+@media(max-width:380px){
+  h1{font-size:42px}
+  .count{min-width:106px;font-size:98px}
+  .actions{grid-template-columns:1fr}
+  .poster-foot{align-items:flex-start;flex-direction:column;gap:5px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="masthead">
+    <a href="index.html" aria-label="Volver a Diana Crunch+">
+      <img class="brand-logo" src="logoDiana.png" alt="Diana">
+    </a>
+    <a class="return-link" href="index.html">Volver al proyecto ↗</a>
+  </header>
+
+  <article class="poster" aria-labelledby="posterTitle">
+    <div class="poster-head"><span>Reto Diana Crunch+</span><span>Tu sesión · Meta 100</span></div>
+    <div class="poster-body">
+      <section class="challenge" aria-label="Crunch Meter">
+        <p class="eyebrow">El sonido de tu esfuerzo</p>
+        <h1 id="posterTitle">¿Cuántos Crunch <span>podés hacer?</span></h1>
+        <div class="counter-row">
+          <output class="count" id="crunchCount" aria-live="polite" aria-atomic="true">0</output>
+          <span class="count-label">Crunch<br>en esta sesión</span>
+        </div>
+        <div class="actions">
+          <button class="button" id="doCrunch" type="button">¡Hacer Crunch!</button>
+          <button class="button secondary" id="resetCrunch" type="button">Reiniciar Crunch</button>
+        </div>
+        <div class="progress">
+          <div class="progress-heading"><span>Progreso de esta sesión</span><strong id="progressCount">0 de 100 Crunch</strong></div>
+          <div class="track" id="progressTrack" role="progressbar" aria-label="Progreso de esta sesión hacia 100 Crunch" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div class="fill" id="progressFill"></div>
+          </div>
+          <div class="progress-meta"><span class="complete" id="completeMessage">¡100 CRUNCH!</span><strong id="progressPercent">0%</strong></div>
+        </div>
+        <div class="share-area">
+          <button class="button" id="shareCrunch" type="button">Compartir mi Crunch</button>
+          <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+          <textarea class="manual-copy" id="manualCopy" aria-label="Resultado listo para copiar manualmente" readonly></textarea>
+        </div>
+      </section>
+
+      <aside class="product-stage" aria-label="Empaques Diana Crunch+">
+        <div class="packs">
+          <figure class="pack">
+            <img src="chicharronesBarbacoa.png" alt="Empaque Diana Crunch+ sabor Barbacoa">
+            <figcaption>BARBACOA</figcaption>
+          </figure>
+          <figure class="pack">
+            <img src="chicharronesLimon.png" alt="Empaque Diana Crunch+ sabor Limón">
+            <figcaption>LIMÓN</figcaption>
+          </figure>
+        </div>
+      </aside>
+    </div>
+    <footer class="poster-foot"><span><strong>Diana Crunch+</strong> · El crunch se escucha</span><span>Contador de esta sesión · No global</span></footer>
+  </article>
+</main>
+
+<script>
+  const crunchCount = document.querySelector('#crunchCount');
+  const doCrunchButton = document.querySelector('#doCrunch');
+  const resetCrunchButton = document.querySelector('#resetCrunch');
+  const progressFill = document.querySelector('#progressFill');
+  const progressTrack = document.querySelector('#progressTrack');
+  const progressPercent = document.querySelector('#progressPercent');
+  const progressCount = document.querySelector('#progressCount');
+  const completeMessage = document.querySelector('#completeMessage');
+  const shareCrunchButton = document.querySelector('#shareCrunch');
+  const feedback = document.querySelector('#feedback');
+  const manualCopy = document.querySelector('#manualCopy');
+  let currentCrunchCount = Math.floor(Math.random() * 101);
+  let animationTimer;
+  let buttonAnimationTimer;
+  let feedbackTimer;
+
+  function updateCrunchMeter() {
+    const progress = Math.min(currentCrunchCount, 100);
+    crunchCount.textContent = currentCrunchCount;
+    progressFill.style.width = `${progress}%`;
+    progressTrack.setAttribute('aria-valuenow', progress);
+    progressPercent.textContent = `${progress}%`;
+    progressCount.textContent = `${currentCrunchCount} de 100 Crunch`;
+    progressTrack.classList.toggle('is-complete', currentCrunchCount >= 100);
+    completeMessage.classList.toggle('is-visible', currentCrunchCount >= 100);
+    manualCopy.classList.remove('is-visible');
+    feedback.textContent = '';
+  }
+
+  function getShareText() {
+    return `🔥 ¡Hice ${currentCrunchCount} Crunch con Diana Crunch+!\n\nVoy ${currentCrunchCount}/100 Crunch.\n\n¿Vos cuántos podés hacer?\n\nDiana. ¡Vas a sentir el Crunch… aunque no sea tuyo!`;
+  }
+
+  function showFeedback(message) {
+    window.clearTimeout(feedbackTimer);
+    feedback.textContent = message;
+    feedbackTimer = window.setTimeout(() => {
+      feedback.textContent = '';
+    }, 2600);
+  }
+
+  async function shareByCopy() {
+    const result = `${getShareText()}\n\n${window.location.href}`;
+    let copied = false;
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(result);
+        copied = true;
+      }
+    } catch {}
+
+    if (!copied) {
+      const temporaryField = document.createElement('textarea');
+      temporaryField.value = result;
+      temporaryField.setAttribute('readonly', '');
+      temporaryField.style.position = 'fixed';
+      temporaryField.style.opacity = '0';
+      document.body.append(temporaryField);
+      temporaryField.select();
+      copied = document.execCommand('copy');
+      temporaryField.remove();
+    }
+
+    if (copied) {
+      manualCopy.classList.remove('is-visible');
+      showFeedback('¡Resultado copiado para compartir!');
+    } else {
+      manualCopy.value = result;
+      manualCopy.classList.add('is-visible');
+      manualCopy.focus();
+      manualCopy.select();
+      showFeedback('Copiá el texto seleccionado para compartir tu resultado.');
+    }
+  }
+
+  doCrunchButton.addEventListener('click', () => {
+    currentCrunchCount += 1;
+    updateCrunchMeter();
+    crunchCount.classList.remove('is-bumping');
+    doCrunchButton.classList.remove('is-crunching');
+    window.clearTimeout(animationTimer);
+    window.clearTimeout(buttonAnimationTimer);
+    void crunchCount.offsetWidth;
+    crunchCount.classList.add('is-bumping');
+    doCrunchButton.classList.add('is-crunching');
+    animationTimer = window.setTimeout(() => crunchCount.classList.remove('is-bumping'), 250);
+    buttonAnimationTimer = window.setTimeout(() => doCrunchButton.classList.remove('is-crunching'), 700);
+  });
+
+  resetCrunchButton.addEventListener('click', () => {
+    currentCrunchCount = 0;
+    updateCrunchMeter();
+  });
+
+  shareCrunchButton.addEventListener('click', async () => {
+    if (typeof navigator.share === 'function') {
+      try {
+        await navigator.share({
+          title: 'Diana Crunch+ — Crunch Meter',
+          text: getShareText(),
+          url: window.location.href
+        });
+        showFeedback('¡Resultado compartido!');
+        return;
+      } catch (error) {
+        if (error.name === 'AbortError') return;
+      }
+    }
+    await shareByCopy();
+  });
+
+  updateCrunchMeter();
+</script>
+</body>
+</html>
