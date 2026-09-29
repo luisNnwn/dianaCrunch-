@@ -121,7 +121,7 @@ h1 span{color:var(--lime)}
   </header>
 
   <article class="poster" aria-labelledby="posterTitle">
-    <div class="poster-head"><span>Reto Diana Crunch+</span><span>Tu sesión · Meta 100</span></div>
+    <div class="poster-head"><span>Reto Diana Crunch+</span><span>Tu sesión · Meta 20</span></div>
     <div class="poster-body">
       <section class="challenge" aria-label="Crunch Meter">
         <p class="eyebrow">El sonido de tu esfuerzo</p>
@@ -135,11 +135,11 @@ h1 span{color:var(--lime)}
           <button class="button secondary" id="resetCrunch" type="button">Reiniciar Crunch</button>
         </div>
         <div class="progress">
-          <div class="progress-heading"><span>Progreso de esta sesión</span><strong id="progressCount">0 de 100 Crunch</strong></div>
-          <div class="track" id="progressTrack" role="progressbar" aria-label="Progreso de esta sesión hacia 100 Crunch" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="progress-heading"><span>Progreso de esta sesión</span><strong id="progressCount">0 de 20 Crunch</strong></div>
+          <div class="track" id="progressTrack" role="progressbar" aria-label="Progreso de esta sesión hacia 20 Crunch" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0">
             <div class="fill" id="progressFill"></div>
           </div>
-          <div class="progress-meta"><span class="complete" id="completeMessage">¡100 CRUNCH!</span><strong id="progressPercent">0%</strong></div>
+          <div class="progress-meta"><span class="complete" id="completeMessage">¡20 CRUNCH!</span><strong id="progressPercent">0%</strong></div>
         </div>
         <div class="share-area">
           <button class="button" id="shareCrunch" type="button">Compartir mi Crunch</button>
@@ -177,18 +177,19 @@ h1 span{color:var(--lime)}
   const shareCrunchButton = document.querySelector('#shareCrunch');
   const feedback = document.querySelector('#feedback');
   const manualCopy = document.querySelector('#manualCopy');
-  let currentCrunchCount = Math.floor(Math.random() * 101);
+  const crunchGoal = 20;
+  let currentCrunchCount = Math.floor(Math.random() * crunchGoal) + 1;
   let animationTimer;
   let buttonAnimationTimer;
   let feedbackTimer;
 
   function updateCrunchMeter() {
-    const progress = Math.min(currentCrunchCount, 100);
+    const progress = Math.min((currentCrunchCount / crunchGoal) * 100, 100);
     crunchCount.textContent = currentCrunchCount;
     progressFill.style.width = `${progress}%`;
     progressTrack.setAttribute('aria-valuenow', progress);
     progressPercent.textContent = `${progress}%`;
-    progressCount.textContent = `${currentCrunchCount} de 100 Crunch`;
+    progressCount.textContent = `${currentCrunchCount} de ${crunchGoal} Crunch`;
     progressTrack.classList.toggle('is-complete', currentCrunchCount >= 100);
     completeMessage.classList.toggle('is-visible', currentCrunchCount >= 100);
     manualCopy.classList.remove('is-visible');
@@ -196,7 +197,7 @@ h1 span{color:var(--lime)}
   }
 
   function getShareText() {
-    return `🔥 ¡Hice ${currentCrunchCount} Crunch con Diana Crunch+!\n\nVoy ${currentCrunchCount}/100 Crunch.\n\n¿Vos cuántos podés hacer?\n\nDiana. ¡Vas a sentir el Crunch… aunque no sea tuyo!`;
+    return `🔥 ¡Hice ${currentCrunchCount} Crunch con Diana Crunch+!\n\nVoy ${currentCrunchCount}/${crunchGoal} Crunch.\n\n¿Vos cuántos podés hacer?\n\nDiana. ¡Vas a sentir el Crunch… aunque no sea tuyo!`;
   }
 
   function showFeedback(message) {
